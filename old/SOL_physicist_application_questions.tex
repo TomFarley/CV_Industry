@@ -1,0 +1,82 @@
+% Setup
+% sudo apt-get install texlive-generic-ext
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{fancy}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+\moderncvcolor{orange}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.9]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Tom}{Farley}
+%\title{Resumé title}                               % optional, remove / comment the line if not wanted
+\address{163 Pinnocks Way,}{Oxford, OX2 9DF, UK}{}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+\phone[mobile]{+44~75216~55595}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+%\phone[fixed]{+2~(345)~678~901}
+%\phone[fax]{+3~(456)~789~012}
+\email{tom.farley@ukaea.uk}                               % optional, remove / comment the line if not wanted
+\homepage{www-users.york.ac.uk/\\$\sim$tpmf500}                         % optional, remove / comment the line if not wanted
+\social[linkedin]{tom-farley-49021a98}                        % optional, remove / comment the line if not wanted
+%\social[twitter]{jdoe}                             % optional, remove / comment the line if not wanted
+\social[github]{github.com/TomFarley}                              % optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+\photo[70pt][0.4pt]{tfarley}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+\quote{I am an experimental plasma physicist interested in the study of the tokamak scrape-off layer. I have experience analysing visible and infra-red camera data for the study of particle and energy transport respectively. I also have hands on experience working on small scale RF plasma experiments performing Langmuir probe measurements.}                                 % optional, remove / comment the line if not wanted
+
+% bibliography adjustements (only useful if you make citations in your resume, or print a list of publications using BibTeX)
+%   to show numerical labels in the bibliography (default is to show no labels)
+\makeatletter\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}\makeatother
+%   to redefine the bibliography heading string ("Publications")
+%\renewcommand{\refname}{Articles}
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+
+\usepackage[disable]{todonotes}
+\usepackage{mdwlist}		% use \begin{enumerate*} etc for compact lists
+% \usepackage{pdfpages}
+\setlength{\hintscolumnwidth}{3.8cm}  % 3.8cm, 4.2cm
+%\reversemarginpar  % todonotes in left margin
+%\setlength{\marginparwidth}{4cm}
+
+\newcommand{\myname}[1]{{\underline{T. Farley}}}
+
+\begin{document}
+
+\textbf{Describe a situation where you have had to deliver something, be it a project or service, to a high standard. How did you know it reached the standard required? Is there anything you could have done to improve what you delivered? (Please provide examples where appropriate)	}
+
+At the commencement of my current PhD project, a deadline within the group was fast approaching for an Enabling Research project focusing on the benchmarking of a number of plasma turbulence codes. I was tasked with delivering the experimental camera measurements of scrape-off layer filaments with which to initialise the codes and compare their output. I thus had to get up to speed quickly with the project and develop the required analysis tools. I made sure to get clear descriptions of the requirements so as to ensure I delivered the required results. Regular checks with colleagues ensured the measurements met the standards requested, which were ultimately confirmed by the peer review process with which the resulting paper was assessed. This experience taught me how I could improve the recording of data and the settings used to produce them, for the purposes of data provenance and guiding subsequent work.
+\\
+
+\textbf{Describe a time when you have worked well and achieved success with a group of others. What was the outcome? What was your contribution? (Please provide examples where appropriate) }
+
+During training as part of the Fusion CDT course I undertook a group project with 4 others to design a hypothetical diagnostic which was not implemented on an existing or planned tokamak. We were located geographically across 4 universities and so had to plan, communicate, share resources and combine our output efficiently using online tools.  I took a proactive role in scheduling our meetings, maintaining good communication and keeping the group to schedule. In the early stages of the project I reviewed possible diagnostic ideas and compared my findings with the other team members.  From a short-list, we decided the most feasible and effective option was a laser-induced breakdown spectroscopy diagnostic to study erosion, deposition and fuel retention in the ITER divertor. I produced a document on Google Drive summarising the physics case, technical requirements and key unsolved questions relating to the project, which the team used to collate our findings and update information as new literature was discovered. This enabled us to work as a cohesive team combining each individual's contribution effectively. We broke up the requirements for the project amongst the group and I took responsibility for the project management plan, formulating the work breakdown structure. This required learning to use new software and techniques and maintaining close contact with my fellow team members, in order to coordinate component lead times and personnel effort to ensure the project schedule, critical path and costs would meet externally imposed ITER requirements. The project was assessed through a report and presentation to which we each contributed a section. The project was awarded a distinction, with the highest marks in the project awarded to the management plan that I worked on. This section was described in feedback as "extremely     well     thought     through     and     presented".
+\\
+
+\textbf{Describe one of your biggest challenges where you had to persevere to succeed. What happened and what did you learn from this? (Please provide examples where appropriate)} 
+
+During my PhD I collaborated with a group at PIIM Laboratory at Aix-Marseilles University, measuring negative ion surface production from diamond materials. I had been allocated 10 weeks of experimental time on a specialised mass-spectroscopy experiment, but on arrival was informed there was a backlog of users requiring time on the apparatus. As a result, it was not until 6 weeks into my visit that I had the planned exclusive access to the apparatus in order to perform my measurements. This led to a great deal of time pressure to achieve my goals. I thus had to rapidly change my plans and I learnt to apply the risk mitigation strategies developed in my grant proposal to achieve the best outcome. 
+During this initial period I took part in the other user's experiments to gain as much experience with the apparatus as possible before starting my measurements, assigned contingency time and switched to prioritising one of the two planned sets of measurements. The initial period was also used to perform modelling work to better inform the experiments. I formed detailed, structured plans and sought advice from others to ensure my experimental time was used as efficiently as possible. Despite being a hectic and stressful period, through effective planning, time management and perseverance, I succeeded in meeting my key goals. These included fully characterising the negative ion surface production properties of nanocrystalline diamond materials for the first time, eliciting interesting high temperature behaviour. The project had many valuable outcomes and led in part to a journal publication.
+\\
+
+\textbf{Please describe your motivation for working at UKAEA.}
+
+I see climate change and global energy security as two of the most pressing issues of our time and the pursuit of fusion energy as a vital endeavour in ensuring the best possible future for life on Earth. I want to work for UKAEA as it is home to world leading fusion expertise and two flagship fusion experiments. UKAEA is therefore the place I believe I can contribute the most to fusion research. I believe working for UKAEA would be highly rewarding as the organisation's future achievements will have the potential to benefit generations to come. At MAST-U in particular, the unique capabilities of its fast visible cameras, divertor science facility and super-X divertor present an exciting opportunity to make unique and challenging measurements, which will better inform our understanding of scape-off layer transport. I believe my experience, expertise and skills make me ideally suited to make an important contribution to this field.
+
+%I see global warming and global energy security as two of the most pressing issues of our time and the pursuit of fusion energy as a vital endeavour in ensuring the best possible future for us all. I see Culham with its two flagship fusion experiments and world leading expertise as the best place for me to contribute to this most valuable and rewarding of undertakings, with the potential to benefit many generations to come. At MAST-U in particular the unique capabilities of its fast visible cameras, divertor science facility and super-X divertor present an exciting opportunity to make unique and challenging measurements to better inform our understanding of scape-off layer transport.
+\end{document}

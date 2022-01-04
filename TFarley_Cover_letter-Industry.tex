@@ -1,0 +1,93 @@
+% Setup
+% sudo apt-get install texlive-generic-ext
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{fancy}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+\moderncvcolor{orange}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.9]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Tom}{Farley}
+%\title{Resumé title}                               % optional, remove / comment the line if not wanted
+\address{163 Pinnocks Way,}{Oxford, OX2 9DF, UK}{}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+\phone[mobile]{+44~75216~55595}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+%\phone[fixed]{+2~(345)~678~901}
+%\phone[fax]{+3~(456)~789~012}
+\email{tom.farley@ukaea.uk}                               % optional, remove / comment the line if not wanted
+\homepage{www-users.york.ac.uk/\\$\sim$tpmf500}                         % optional, remove / comment the line if not wanted
+\social[linkedin]{tom-farley-49021a98}                        % optional, remove / comment the line if not wanted
+%\social[twitter]{jdoe}                             % optional, remove / comment the line if not wanted
+\social[github]{github.com/TomFarley}                              % optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+\photo[70pt][0.4pt]{tfarley}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+\quote{I am an experimental plasma physicist interested in the study of the tokamak scrape-off layer. I have experience analysing visible and infra-red camera data for the study of particle and energy transport respectively. I also have hands on experience working on small scale RF plasma experiments performing Langmuir probe measurements.}                                 % optional, remove / comment the line if not wanted
+
+% bibliography adjustements (only useful if you make citations in your resume, or print a list of publications using BibTeX)
+%   to show numerical labels in the bibliography (default is to show no labels)
+\makeatletter\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}\makeatother
+%   to redefine the bibliography heading string ("Publications")
+%\renewcommand{\refname}{Articles}
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+
+\usepackage[disable]{todonotes}
+\usepackage{mdwlist}		% use \begin{enumerate*} etc for compact lists
+% \usepackage{pdfpages}
+\setlength{\hintscolumnwidth}{3.8cm}  % 3.8cm, 4.2cm
+%\reversemarginpar  % todonotes in left margin
+%\setlength{\marginparwidth}{4cm}
+
+\newcommand{\myname}[1]{{\underline{T. Farley}}}
+
+\begin{document}
+
+%-----       letter       ---------------------------------------------------------
+% recipient data
+\recipient{UKAEA recruitment team}{Culham Centre for Fusion Energy\\Culham Science Centre \\Abingdon \\OX14 3EB}
+\date{\today}
+\opening{\textbf{Application for position of \textit{Scrape-Off Layer Turbulence Physicist}}\\~\\
+Dear Sir or Madam,}
+\closing{Yours faithfully,}
+\enclosure[Attached]{curriculum vit\ae{}}          % use an optional argument to use a string other than "Enclosure", or redefine \enclname
+\makelettertitle
+
+I should like to apply for the role of \textit{Scrape-Off Layer Turbulence Physicist}, for which I feel I am particularly well suited.
+% and I hope to demonstrate why.
+I see MAST-U, with its unique visible imaging capabilities, cutting edge fast framing cameras, versatile divertor science facility and powerful mid-plane reciprocating probe system, as an extremely exciting opportunity for significantly advancing our understanding of scrape-off layer (SOL) physics.
+In particular, it will be fascinating to investigate the effects of the super-X divertor and varied divertor and detachment regimes on both upstream and divertor SOL dynamics.
+
+My PhD project as part of the Fusion CDT, entitled `\textit{Analysis of Scrape-Off Layer Plasma Filaments Through Fast Visible Imaging}', has given me a strong background in SOL physics, particularly filamentary transport of particles.
+I already have considerable experience in the analysis of fast visible camera data on MAST and I see this position as the perfect opportunity to develop this expertise further, particularly in taking advantage of the stereoscopic imaging measurements that will be possible on MAST-U.
+My existing familiarity with the MAST-U tokamak and its visual camera and Langmuir probe systems will enable me to quickly start applying MAST-U's diagnostics to their full potential.
+
+My work performing novel SOL power decay length measurements, using IR thermography on JET, further demonstrates my experience with SOL physics, imaging measurements and working within different research groups.
+My work on neutral beam negative ion sources has provided me with valuable experience working hands on with vacuum systems and performing Langmuir probe measurements in weakly magnetised RF plasmas.
+I am highly proficient in python and have developed the large, sophisticated Elzar suite of tools for enhancing, analysing and reviewing fast camera data.
+
+I am very well organised and believe I will operate the diagnostic systems with efficiency, applying good practice and maintaining accurate records of measurements, adaptations and changes.
+I appreciate my experience with electrical probes is not at the same level as that which I have with imaging techniques, but I believe I can rapidly develop these skills.
+My strong record of publications at this early stage in my career, with contributions towards 8 publications and a first author paper in preparation, demonstrate my proven ability to conduct high quality scientific research.
+
+While my anticipated thesis submission date is not until early 2019, I hope my strengths and experience in the area will justify a later start date for the position.
+I attach my CV with further evidence of my suitability for this position and I would be grateful for the opportunity to demonstrate my capabilities further at interview. 
+%I look forward to hearing from you.
+
+\makeletterclosing
+\end{document}
