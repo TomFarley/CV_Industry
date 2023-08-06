@@ -1,0 +1,548 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2015 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+% Setup
+% sudo apt-get install texlive-generic-ext
+
+\documentclass[12pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{classic}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+\moderncvcolor{purple}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% Enable partial bold text This is some {\fbseries fake bolder} text.
+\usepackage{xfakebold,xspace}
+\NewDocumentCommand{\fbseries}{ o }{%
+  \IfValueTF{#1}
+    {\unskip\setBold[#1]}%
+    {\setBold[0.3]}
+  \aftergroup\unsetBold\aftergroup
+  \xspace
+}
+
+% adjust the page margins
+\usepackage[scale=0.92]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Tom}{Farley \Large MSci, PhD}
+%\title{Resumé title}                               % optional, remove / comment the line if not wanted
+\address{7 Limetree Road, Plymouth, PL3 5UB, UK}{}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+\phone[mobile]{075216~55595}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+%\phone[fixed]{+2~(345)~678~901}
+%\phone[fax]{+3~(456)~789~012}
+\email{farleytpm@gmail.com}                               % optional, remove / comment the line if not wanted
+% \homepage{www.fusion-cdt.ac.uk/student/tom-farley}                         % optional, remove / comment the line if not wanted
+% www-users.york.ac.uk/\\$\sim$tpmf500
+\social[linkedin]{tom-farley-49021a98}                        % optional, remove / comment the line if not wanted
+%\social[twitter]{jdoe}                             % optional, remove / comment the line if not wanted
+\social[github]{TomFarley}                              % optional, remove / comment the line if not wanted
+\extrainfo{\href{https://orcid.org/0000-0003-2307-6019}{Orcid ID: 0000-0003-2307-6019}}                % optional, remove / comment the line if not wanted
+\photo[75pt][0.4pt]{images/Tom_Farley-July_2023-square}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+
+% Make quote section at top of document wider
+\let\originalrecomputecvlengths\recomputecvlengths
+\renewcommand*{\recomputecvlengths}{%
+\originalrecomputecvlengths%
+\setlength{\quotewidth}{0.92\textwidth}}
+% Set quote fontsize
+\renewcommand*{\quotefont}{\fontsize{13}{0}\mdseries\upshape}
+
+\quote{I am a physicist with extensive experience using \texttt{python} to design and implement complex data analysis workflows, applied to large experimental nuclear fusion datasets, with particular expertise in image processing.
+%for fusion plasma science. 
+%This has included generating novel tomographic reconstructions of plasma structures from fast camera data using knowledge of the confining magnetic field geometry, analysing infra-red camera data to calculate surface heat fluxes and applying varied statistical techniques to interpret time series data.
+%signals from Langmuir probes. 
+I am excited by data science and love producing flexible and robust automated workflows that extract valuable information from complex and varied datasets.}                                 % optional, remove / comment the line if not wanted
+
+% Adjust spacing above and below quote
+\usepackage{xpatch}
+\xpatchcmd{\makecvhead}{%
+  \usebox{\makecvheadnamebox}\fi%
+  \\[2.5em]%
+  }{%
+  \usebox{\makecvheadnamebox}\fi%
+  \\[1em]%
+  }{}{}
+%% add the following additionally
+\xpatchcmd{\makecvhead}{\quotestyle{\@quote}\end{minipage}\\[2.5em]}{%
+  \quotestyle{\@quote}\end{minipage}\\[1em]}{}{}
+
+% bibliography adjustements (only useful if you make citations in your resume, or print a list of publications using BibTeX)
+%   to show numerical labels in the bibliography (default is to show no labels)
+\makeatletter\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}\makeatother
+%   to redefine the bibliography heading string ("Publications")
+%\renewcommand{\refname}{Articles}
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+
+\usepackage[disable]{todonotes}
+\usepackage{mdwlist}		% use \begin{enumerate*} etc for compact lists
+% \usepackage{pdfpages}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[usenames, svgnames]{xcolor}
+\definecolor{mypurple}{HTML}{8644cc}
+
+% Adjust width of left hand column
+\setlength{\hintscolumnwidth}{2.15cm}  % 3.7cm, 3.8cm, 4.2cm
+%\reversemarginpar  % todonotes in left margin
+%\setlength{\marginparwidth}{4cm}
+
+\newcommand{\myname}[1]{{\underline{T. Farley}}}
+
+\usepackage{setspace}
+\setstretch{1.045}  % Set line spacing
+
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+\vspace*{-0.85cm}
+
+\section{Key Competencies}
+% \subsection{Programming}
+\cventry{\textcolor{mypurple}{Programming}}{Software development}{}{}{}
+{\begin{itemize}%
+\item Highly experienced \textcolor{mypurple}{\texttt{python} programmer}, applying OOP, TDD and HPC principals in complex programs.%data analysis codes.
+\item Apply \texttt{git} \textcolor{mypurple}{version control} and \textcolor{mypurple}{CI} to produce reliable, well documented, collaborative code bases. % with tools such as \texttt{Sphinx} 
+\item \textcolor{mypurple}{Document projects} with docstrings and markup and typesetting languages such as \texttt{markdown} and \LaTeX.
+\item Routinely with complex \textcolor{mypurple}{tabular} and \textcolor{mypurple}{multidimensional data} using \texttt{numpy}, \texttt{pandas}, \texttt{xarray} and \texttt{scipy}.
+\item Proficient \textcolor{mypurple}{\texttt{linux}} user applying \texttt{bash} command line tools to implement complex workflows. 
+\item Produce \textcolor{mypurple}{GUI apps} with tools such as \texttt{pyQT} to facilitate custom interactions with multidimensional data.
+\item Experience with \textcolor{mypurple}{\texttt{SQL}}, \texttt{C}, \texttt{IDL}, \texttt{MATLAB} and familiar with \texttt{HTML}, \texttt{C++},  \texttt{Perl},  \texttt{Visual Basic} and \texttt{Fortran}. % bash scriting
+\end{itemize}}
+
+\cventry{}{Data analysis}{}{}{}
+{\begin{itemize}%
+\item Design and integrate end-to-end \textcolor{mypurple}{data pipelines}, converting \textcolor{mypurple}{unstructured data} to publishable results.
+\newline
+\textit{e.g. Managed experimental data from collection and formatting, to storage, analysis and distribution}.
+\item Use \textcolor{mypurple}{regression analyses} and \textcolor{mypurple}{parameter fitting} to identify relationships, functional forms and  uncertainties. \newline
+\textit{e.g. identified plasma filament velocity distributions are described well by a Weibull distribution}.
+\item \textcolor{mypurple}{Restructure} and \textcolor{mypurple}{clean} varied data for analysis using sophisticated algorithms. \newline
+\textit{e.g. Developed regularised SART inversion technique for tomographic inversion of plasma emission.}
+\item Apply \textcolor{mypurple}{image processing} techniques to locate and extract key information from images. \newline
+\textit{e.g. Identified plasma filaments in inverted images using watershed algorithm, dilation and thresholding}.
+\item Calculate varied \textcolor{mypurple}{statistical properties} and moments of measured \textcolor{mypurple}{distributions}.\newline
+\textit{e.g. Validated stochastic filament model with skewness-kurtosis relation \& exponential timing distribution.}
+\end{itemize}}
+
+\cventry{\textcolor{mypurple}{Key skills}}{Organisational skills}{}{}{}
+{\begin{itemize}%
+\item Excellent organisational skills, \textcolor{mypurple}{identifying opportunities} and improving the \textcolor{mypurple}{efficiency} of tasks and projects\newline
+\textit{e.g. Instigator and chair of site-wide group to share programming practices, expertise and resources.} % of the Culham Coding Discussion Group (CDG) -
+\item Adept \textcolor{mypurple}{project manager}, drawing up plans, maintaining detailed records and managing time effectively.\newline
+\textit{e.g. Project managed charity's website development, defining requirements, liaising with developers and stakeholders and coordinating content creation, testing and production.}
+\item Ability to improvise and \textcolor{mypurple}{adapt} to challenging situations and work under pressure to meet \textcolor{mypurple}{deadlines}. 
+\newline
+\textit{e.g. Delivered 1/3 KPI measurements in high-pressure environment for £21 million EU cliff-edge funding.}
+% \textit{e.g. Turned closure of research facility into opportunity to persue new research topic}
+\end{itemize}}
+
+\cventry{}{Communication}{}{}{}
+{\begin{itemize}%
+\item Excellent communication, both verbally in \textcolor{mypurple}{meetings \& presentations} and in \textcolor{mypurple}{technical \& \href{https://orcid.org/0000-0003-2307-6019}{scientific writing}}.
+\newline
+\textit{e.g. Presented at international conferences and contributed to over a \href{https://orcid.org/0000-0003-2307-6019}{dozen journal publications}.}
+\item Produce refined, informative, engaging \textcolor{mypurple}{data visualisations} with \texttt{matplotlib} and \texttt{plotly}.\newline
+\textit{e.g. Used geometry matrices to project and superimpose plasma density on different surfaces in photos.}% to communicate complex multi-dimensional information.}
+\end{itemize}}
+
+
+\cventry{}{Interpersonal skills}{}{}{}
+{\begin{itemize}%
+\item Perform well in a team, integrating readily into \textcolor{mypurple}{different teams and environments}. \newline
+\textit{e.g. Worked in seven varied, often international research groups across different labs and institutions.}
+\item \textcolor{mypurple}{Supervised} and led Masters and PhD students, teaching them new software and physics principals. \newline
+\textit{e.g. Conscientiously supervised PhD student collaborative project, successfully overcoming challenges.}
+\item Keen to \textcolor{mypurple}{learn from others} and \textcolor{mypurple}{pass on skills} and expertise to further enable others to succeed. \newline
+\textit{e.g. Voluntarily ran workshops and inductions for colleagues to help them better utilise workplace tools.}
+\end{itemize}}
+
+% \section{Responsibilities}
+
+% \subsection{Groups}
+% \cventry{2017--2022}
+% {Software Developers Working Group}{Member of the Culham Software Developers Working Group (SDWG)}{}{}
+% {Site wide body responsible for coordinating resources for software developers.
+% }
+% \subsection{Meetings}
+% \cventry{2017--2022}
+% {Coding Discussion Group}{Founder and coordinator of the Culham Coding Discussion Group (CDG)}{}{}{Fortnightly meetings with online resources to share programming knowledge, expertise and resources.
+% }
+% \subsection{Supervision}
+% \cventry{4 months}
+% {Masters student}{\normalfont{Supervised masters student from University of Rome, Italy working on filament tracking for masters project}}{}{}{}
+% \cventry{3 months}
+% {Undergraduate project}{\normalfont{Supervised 3rd year undergraduate student from University of Cagliari, Italy working on filament detection for BSc project}}{}{}{}
+
+% \section{Outreach}
+% \cvitem{Tour guide}{Frequently led MAST-U tours for visitors, open evening and open day attendees.}
+% \cvitem{GCSE work experience}{Supervised GCSE work experience student on placement at CCFE.}
+% \cvitem{Sun dome}{Helped with sun dome science workshop at local primary schools.}
+
+% \section{Key Competencies}
+% %\cvlistitem{ Able to take initiative when presented with unfamiliar tasks}
+% %\cvlistitem{ Self-motivated and able to plan and structure work into clearly identified goals}
+% %\cvlistitem{ Ability to work under time pressure to meet deadlines }
+% %\cvlistitem{ Flexible and adaptable when working in a team environment}
+% %\cvlistitem{ Analytical ability to identify strengths and weaknesses of an argument or method}
+% %\cvlistitem{ Experience working on group projects involving remote collaboration and project management}
+% \cvlistitem{\textbf{Experimental experience}
+% \begin{itemize}
+% \item Experience working with RF plasma sources, compressed gas, vacuum systems and pumps and lasers.
+% \item Experience performing plasma measurements with langmuir probes, mass spectrometers and visible spectrometers.
+% %\item Experience developing analysis tools to process data
+% \end{itemize} }
+% \cvlistitem{\textbf{Programming experience}
+% \begin{itemize}
+% \item Experienced python programmer, applying OOP, TDD and HPC principals.
+% \item Experience with C, IDL and MATLAB.
+% \item Familiarity with C++, Bash scripting, Perl, Visual Basic and Fortran. 
+% %\item Familiar with high performance computing concepts and techniques. 
+% \item Experienced user of git version control and the the \LaTeX~typesetting language.
+% %\item Proficient user of MS office applications
+% \end{itemize} }
+% \cvlistitem{\textbf{Organisational skills}
+% \begin{itemize}
+% \item Excellent organisational skill, drawing up plans, maintaining detailed records and managing time effectively.
+% \end{itemize} }
+% \cvlistitem{\textbf{Communication skills}
+% \begin{itemize}
+% \item Communicate technical information in a competent and accessible manner, both verbally and in writing.
+% \item Perform well in a team, integrating readily into different teams and environments. 
+% \end{itemize}}
+% %\cvlistitem{ Regular user of linux with familiarity with shell scripting}
+% %\cvlistitem{Presentational skills to communicate technical information in a competent and accessible manner}
+
+\newpage
+
+\section{Experience}
+\cventry{\textcolor{mypurple}{April 2022-- Sept 2023} 
+% \begin{figure}
+\includegraphics[width=1.2cm]{images/logo-othona-west-dorset-2016-purple}
+% \centering
+% \end{figure}
+}% \cventry{years}
+{\textcolor{mypurple}{Catering and website manager} \normalfont{(career break)}} %(Responsible for the MAST-U infra-red systems)}% {degree/job title}
+{Othona Community West Dorset} %Atomic Energy Authority}% {institution/employer}
+{\newline The Othona Community, Coast Road, Burton Bradstock, DT6 4RN}% {localization}
+{}% {optional: grade/...}
+{\normalsize{\textbf{Managed retreat centre kitchen including menu planning, ordering, hygiene and cooking}}% {optional: comment/job description}
+\begin{itemize}%
+\item \textcolor{mypurple}{Managed} kitchen with £20k+ annual catering \textcolor{mypurple}{budget}, sourcing \& preparing hearty meals.
+\item  Took on \textcolor{mypurple}{project management} of the Othona charity's website redevelopment, leading Drupal CMS and CiviCRM database audit, £15k tender, requirements definition and project delivery. 
+\item Updated organisation's \textcolor{mypurple}{digital practises} to use Google Workspace services and provided training. 
+\end{itemize}
+}
+\cventry{\textcolor{mypurple}{July 2019--\\Feb 2022} 
+% \raggedright
+% \begin{flushright}
+\textcolor{white}{.~~~~~~.}\includegraphics[width=3.5cm]{images/ukaea_logo}% \cventry{years}
+% \end{flushright}
+}
+{\textcolor{mypurple}{Edge \& Divertor Physicist}} %(Responsible for the MAST-U infra-red systems)}% {degree/job title}
+{\small UKAEA} %Atomic Energy Authority}% {institution/employer}
+{\small Culham Centre for Fusion Energy (CCFE), Abingdon, OX14 3EB}% {localization}
+{}% {optional: grade/...}
+{\normalsize{\textbf{Responsible officer for the MAST-U infra-red (IR) thermography systems}}% {optional: comment/job description}
+\begin{itemize}%
+\item Responsible for \textcolor{mypurple}{collection} and \textcolor{mypurple}{analysis} of IR data central to UK and EU fusion physics programs.
+\item \textcolor{mypurple}{Delivered KPI} measurements required for \textcolor{mypurple}{£21 million} MAST-UE funding by EU departure deadline. 
+\item Developed end-to-end \textcolor{mypurple}{analysis workflow} providing near-realtime heatflux and science output.
+\item \textcolor{mypurple}{Scientific Coordinator} leading planning, execution and exploitation of fusion experiments.
+\item \textcolor{mypurple}{Installed} and \textcolor{mypurple}{operated} £300k+ of IR imaging, data relay and computing equipment.
+\item Managed \textcolor{mypurple}{design} and \textcolor{mypurple}{procurement} of infrastructure and scientific equipment.
+\end{itemize}
+}
+
+\cventry{\textcolor{mypurple}{Sept 2013--\\June 2019} \includegraphics[width=1.1cm]{images/cdt_lgo.png}}
+{\textcolor{mypurple}{Doctoral student}}% {degree/job title}
+{University of Liverpool (as part of Fusion CDT)}% {institution/employer}
+{%\newline
+ \small based at CCFE (see above)}% {localization}
+{} % {optional: grade/...}
+% }
+{\normalsize{\textbf{Tomographic inversion and analysis of plasma video from the MAST tokamak}}
+\begin{itemize}%
+\item \href{https://pubs.aip.org/aip/rsi/article-abstract/90/9/093502/363323/Filament-identification-in-wide-angle-high-speed?redirectedFrom=fulltext}{Developed suite of analysis tools for the \textcolor{mypurple}{tomographic inversion}, identification, measurement} and tracking of plasma filaments in fast camera data.
+\item \href{https://doi.org/10.1016/j.fusengdes.2018.12.071}{Generated synthetic \textcolor{mypurple}{ML training dataset} for filament detection with \textcolor{mypurple}{convolutional neural networks}}.
+\item \href{https://orcid.org/0000-0003-2307-6019}{Published findings in \textcolor{mypurple}{peer-reviewed journals}} and presented at \textcolor{mypurple}{international conferences} {\small(see \textcolor{mypurple}{\textit{\href{http://doi.org/10.17638/03066785}{thesis}}})}.
+\end{itemize}
+}
+
+\cventry{\textcolor{mypurple}{Sept 2009--\\July 2013} \includegraphics[width=1.3cm]{images/ccfe_logo}}
+{\textcolor{mypurple}{Masters student} \normalfont{(industrial placement)}}% {degree/job title}
+{University of Bristol}% {institution/employer}
+{%\newline
+\small Based at CCFE (see above)}% {localization}
+{} % {optional: grade/...}
+% }
+{\normalsize{\textbf{{Infra-red measurements of scrape-off layer power decay length in JET tokamak}}}
+\begin{itemize}%
+\item \href{https://iopscience.iop.org/article/10.1088/0029-5515/53/7/073016/meta}{\textcolor{mypurple}{Pioneered technique} and analysis tools to measure plasma scrape-off layer power decay length} from infra-red images of the JET tokomak interior - now a \textcolor{mypurple}{standard technique internationally}.
+% \item Performed analysis of large dedicated \textcolor{mypurple}{experimental database} leading to \href{https://iopscience.iop.org/article/10.1088/0029-5515/53/7/073016/meta}{\textit{Nuclear Fusion} publication}.
+%\item Learnt and became proficient in the IDL programing language
+\end{itemize}
+}
+
+\section{Education}
+\cventry{}{\normalfont%}{%}{%}{%}{%\newline{}% \relax
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{tabular}[t]{@{}llll@{}}
+\toprule
+\textbf{Institution} &
+  \textbf{Subject} &
+  \textbf{Qualification} &
+  \textbf{Dates attended} \\ \midrule
+\begin{tabular}[c]{@{}l@{}}\includegraphics[scale=0.2]{images/liv_logo}~~\end{tabular} &
+  Fusion Physics & % (with Fusion CDT)
+  PhD (see \textit{\href{http://doi.org/10.17638/03066785}{thesis}})&
+  09/2013 – 08/2019 \\
+\includegraphics[scale=0.21]{images/bristol_logopng} &
+  \begin{tabular}[c]{@{}l@{}}Physics with \\ Industrial Experience~~\end{tabular} &
+  MSci, \textit{1st Class Honors}~~ &
+  09/2009 – 07/2013 \\ \bottomrule
+\end{tabular}
+}{}{}{}{}{}
+
+% \cventry{Jan--March 2015}{Measurements of negative ion surface production from diamond materials}{\newline {PIIM Laboratory, Aix-Marseilles University, Marseilles, France}}{}{}
+% {\begin{itemize}%
+% \item Measured negative ions produced upon positive ion bombardment of diamond surfaces with a mass spectrometer and energy analyser. 
+% %\item Performed modelling of negative ion distribution functions using SRIM code.
+% \item Performed first of a kind measurements of monocrystaline diamond and extensively characterised temperature dependent properties of nanocrystaline diamond, contributing to publication \cite{Cartry2017}.
+% \end{itemize}}
+
+
+% \cventry{Sep--Dec 2014}
+% {Characterisation of Small Negative Ion Facility}{\newline Culham Centre for Fusion Energy}
+% {}
+% {}{\begin{itemize}%
+% \item Commissioned the Langmuir probe and high resolution visible spectrometer diagnostics on the Small Negative Ion Facility (SNIF).
+% \item Identified and fixed RF earthing issues, improving performance of the plasma source.
+% \item Performed spectroscopic measurements of the ion source plasma composition, contributing to publication \cite{Zacks2017}.
+% \end{itemize}}
+
+
+% \subsection{Masters Project}
+% \cventry{Sep 2012--Sep 2013}
+% {DFT calculations of the superconducting properties of the \texorpdfstring{YIr\textsubscript{2}Si\textsubscript{2}}{YIr2Si2} polymorphs}
+% {\newline \emph{University of Bristol}}
+% {}
+% {}
+% {\begin{itemize}%
+% \item Performed Density Functional Theory (DFT) \textit{ab initio} calculations of the band structure and Fermi surface properties of the polymorphs of \texorpdfstring{YIr\textsubscript{2}Si\textsubscript{2}}{YIr2Si2}.
+% \item Predicted a superconducting transition temperature of $T_c= 2.58$K explained by intermediate-strength conventional electron-phonon coupling, resulting in a publication \cite{Billington2014}.
+% \end{itemize}}
+% \subsection{Undergraduate}
+% \cventry{Aug 2011--Aug 2012}
+% {Infra-red measurements of scrape-off layer power decay length in JET}
+% {\newline Culham Centre for Fusion Energy}{}{}
+% {\begin{itemize}%
+% \item Developed the tools required to measure the plasma scrape-off layer power decay length from infra-red images of the interior of the JET tokomak.
+% %\item Performed data analysis of large dedicated pulse database
+% %\item Learnt and became proficient in the IDL programing language
+% %\item Worked with large degree of independence with limited contact with supervisor
+% %\item Managed time effectively both to meet deadlines at work and cover material for university examinations though distance learning at home
+% %\item Maintained detailed log of work for discussing progress and challenges with supervisor
+% %\item Gained experience working in an international scientific research environment
+% %\item Produced novel results which are influencing the current ITER design review
+% \item Analysed a large dedicated pulse database, the results of which led to a publication in Nuclear Fusion \cite{Arnoux2013} and were presented by my supervisor at the 2012 IAEA conference \cite{Arnoux2012}.
+% \item Tools are now used by others and have initiated similar measurements on the COMPASS tokamak.
+% \end{itemize}}
+
+% Publications from a BibTeX file without multibib
+%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
+%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
+
+% \nocite{*}
+% \bibliographystyle{cv_tfarley_custom_bib}   % cv_tfarley_custom_bib, unsrt
+% \bibliography{TFarley_publications3}                        % 'publications' is the name of a BibTeX file
+
+% Publications from a BibTeX file using the multibib package
+%\section{Publications}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
+
+%\section{Publications}
+%\cventry{year--year}{Job title}{Employer}{City}{}{}
+%\cite{Zacks2017}
+%\cite{Cartry2017}
+%\cite{Walkden2016}
+%\cite{Militello2016a}
+%\cite{Billington2014}
+%\cite{Arnoux2013b}
+%\cite{Nunes2012}
+%\cite{IAEA_synopsis}
+
+% \section{Conferences and Workshops}
+% \subsection{Oral}
+% \cventry{May 2017}
+% {Fusion Frontiers and Interfaces Workshop}{York}{\newline Fast Camera Analysis of Plasma Filaments}{}{}
+% \subsection{Posters}
+% \cventry{Oct 2017}
+% {59th Annual Meeting of the APS Division of Plasma Physics}{\newline Milwaukee, Wisconsin, USA}{\newline Fast Camera Analysis of Plasma Filaments}{}
+% {}
+% \cventry{April 2017}
+% {44th IOP Plasma Physics Conference}{Oxford, UK}{\newline An Algorithm for the Analysis of Filaments in Fast Camera Data}{}
+% {}
+% \cventry{May 2016} 
+% {Fusion Frontiers and Interfaces Workshop}{York, UK}{\newline Pseudo Langmuir Probe Analysis  of Filaments in MAST Using Fast Cameras}{}
+% {}
+% \cventry{Nov 2014}
+% {FuseNet PhD Workshop}{Lisbon, Portugal}{\newline The SNIFF Caesium Free Negative Ion Source}{}
+% {}
+% \cventry{Oct 2014}
+% {4th International Symposium on Negative Ions, Beams and Sources}{IPP Garching, Germany}{\newline Caesium Free Negative Ion Sources}{}
+% {}
+% \cventry{May 2014}
+% {Fusion Frontiers and Interfaces Workshop}{York, UK}{\newline Laser Photo-detachment Measurements of Negative Ion Density}{}
+% {}
+
+
+
+% \section{Affiliations}
+% \cventry{2013--}
+% {\normalfont{Member of the \textbf{Institute of Physics}}}{}{}{}{}
+% \cventry{2017--}
+% {\normalfont{Member of the \textbf{American Physical Society}}}{}{}{}{}
+
+\section{References}
+
+\begin{cvcolumns}
+\cvcolumn{Tony Jaques}{
+Warden of Othona Community West Dorset \\
+The Othona Community  \\
+Coast Road	  \\
+Burton Bradstock \\
+Dorset, DT6 4RN, UK \\
+\emailsymbol warden@othonawestdorset.org.uk \\
+\fixedphonesymbol +44(0) 1308 897 130}
+
+% \cvcolumn{Dr James Harrison}{
+% Deputy Head of Tokamak Science \\
+% Culham Centre for Fusion Energy \\
+% Office: D3/2.04	  \\
+% Culham Science Centre \\
+% Abingdon, OX14 3DB, UK \\
+% \emailsymbol James.Harrison@ukaea.uk \\
+% \fixedphonesymbol +44(0) 1235 46 6209}
+
+
+% \cvcolumn{Professor James Bradley}{
+% Professor and Head of Group \\
+% Department of Electrical Engineering and Electronics\\
+% University of Liverpool \\
+% Liverpool, L69 3GJ, UK \\
+% \emailsymbol J.W.Bradley@liverpool.ac.uk \\
+% \fixedphonesymbol +44 (0)151 794 4545}
+
+
+% \begin{cvcolumns}
+% \cvcolumn{Professor Antony Carrington}{
+% Personal tutor \\
+% HH Wills Physics Laboratory \\
+% University of Bristol \\
+% Tyndall Avenue \\
+% Bristol \\
+% BS8 1TL \\
+% \emailsymbol A.Carrington@bristol.ac.uk \\
+% \fixedphonesymbol +44 (0)117 928 8713}
+
+\cvcolumn{Dr Fulvio Militello}
+ {Director of Tokamak Science and MAST-U \\
+Culham Centre for Fusion Energy (UKAEA) \\
+Office: D3/1.76	  \\
+Culham Science Centre \\
+Abingdon, OX14 3DB, UK \\
+\emailsymbol fulvio.militello@ukaea.ac.uk \\
+\fixedphonesymbol +44(0) 1235 46 6253}
+
+\end{cvcolumns}
+\todo{Update webpage}
+
+%\begin{cvcolumns}
+%\cvcolumn{Dr James Harrison}{
+%Deputy Head of Tokamak Science \\
+%Culham Centre for Fusion Energy \\
+%Office: D3/2.04	  \\
+%Culham Science Centre \\
+%Abingdon, OX14 3DB, UK \\
+%\emailsymbol James.Harrison@ukaea.uk \\
+%\fixedphonesymbol +44(0) 1235 46 6209}
+%  
+%\cvcolumn{Dr Gilles Arnoux}
+%  {
+%Section Leader: \\Viewing Systems and Thermal Measurements \\
+%Plasma Boundary Group, JET Diagnostics Department \\
+%Culham Centre for Fusion Energy \\
+%Bldg/Office: K1/1/14 \\
+%Culham Science Centre \\
+%Abingdon, OX14 3DB, UK \\
+%\emailsymbol gilles.arnoux@ccfe.ac.uk \\
+%\fixedphonesymbol +44(0) 1235 46 4809}
+%\end{cvcolumns}
+
+%\clearpage
+%%-----       letter       ---------------------------------------------------------
+%% recipient data
+%\recipient{UKAEA recruitment team}{Culham Centre for Fusion Energy\\Culham Science Centre \\Abingdon \\OX14 3EB}
+%\date{\today}
+%\opening{\textbf{Application for position of \textit{Scrape-Off Layer Turbulence Physicist}}\\~\\
+%Dear Sir or Madam,}
+%\closing{Yours faithfully,}
+%\enclosure[Attached]{curriculum vit\ae{}}          % use an optional argument to use a string other than "Enclosure", or redefine \enclname
+%\makelettertitle
+%
+%I should like to apply for the role of \textit{Scrape-Off Layer Turbulence Physicist}, for which I feel I am particularly well suited.
+%% and I hope to demonstrate why.
+%I see MAST-U, with its unique visible imaging capabilities, cutting edge fast framing cameras, versatile divertor science facility and powerful mid-plane reciprocating probe system, as an extremely exciting opportunity for significantly advancing our understanding of scrape-off layer (SOL) physics.
+%In particular, it will be fascinating to investigate the effects of the super-X divertor and varied divertor and detachment regimes on both upstream and divertor SOL dynamics.
+%
+%My PhD project as part of the Fusion CDT, entitled `\textit{Analysis of Scrape-Off Layer Plasma Filaments Through Fast Visible Imaging}', has given me a strong background in SOL physics, particularly filamentary transport of particles.
+%I already have considerable experience in the analysis of fast visible camera data on MAST and I see this position as the perfect opportunity to develop this expertise further, particularly in taking advantage of the stereoscopic imaging measurements that will be possible on MAST-U.
+%My existing familiarity with the MAST-U tokamak and its visual camera and Langmuir probe systems will enable me to quickly start applying MAST-U's diagnostics to their full potential.
+%
+%My work performing novel SOL power decay length measurements, using IR thermography on JET, further demonstrates my experience with SOL physics, imaging measurements and working within different research groups.
+%My work on neutral beam negative ion sources has provided me with valuable experience working hands on with vacuum systems and performing Langmuir probe measurements in weakly magnetised RF plasmas.
+%I am highly proficient in python and have developed the large, sophisticated Elzar suite of tools for enhancing, analysing and reviewing fast camera data.
+%
+%I am very well organised and believe I will operate the diagnostic systems with efficiency, applying good practice and maintaining accurate records of measurements, adaptations and changes.
+%I appreciate my experience with electrical probes is not at the same level as that which I have with imaging techniques, but I believe I can rapidly develop these skills.
+%My strong record of publications at this early stage in my career, with contributions towards 8 publications and a first author paper in preparation, demonstrate my proven ability to conduct high quality scientific research.
+%
+%While my anticipated thesis submission date is not until early 2019, I hope my strengths and experience in the area will justify a later start date for the position.
+%I attach my CV with further evidence of my suitability for this position and I would be grateful for the opportunity to demonstrate my capabilities further at interview. 
+%%I look forward to hearing from you.
+%
+%\makeletterclosing
+
+
+%\listoftodos
+
+%\clearpage\end{CJK*}                              % if you are typesetting your resume in Chinese using CJK; the \clearpage is required for fancyhdr to work correctly with CJK, though it kills the page numbering by making \lastpage undefined
+\end{document}
+
+
+%% end of file `template.tex'.
